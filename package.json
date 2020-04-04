@@ -5,8 +5,32 @@
   "repository": "git@github.com:estevam31/recipes-api.git",
   "author": "estevam31 <estevamvinicius31@gmail.com>",
   "license": "MIT",
+  "scripts": {
+    "dev": "nodemon --exec babel-node src/server.js",
+    "start": "babel-node src/server.js",
+    "test": "jest"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "@babel/core": "^7.9.0",
+    "@babel/node": "^7.8.7",
+    "@babel/preset-env": "^7.9.0",
+    "babel-jest": "^25.2.6",
+    "eslint": "^6.8.0",
+    "eslint-config-prettier": "^6.10.1",
+    "eslint-config-standard": "^14.1.1",
+    "eslint-plugin-import": "^2.20.2",
+    "eslint-plugin-jest": "^23.8.2",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-standard": "^4.0.1",
+    "husky": "^4.2.3",
+    "jest": "^25.2.7",
+    "lint-staged": "^10.1.1",
+    "nodemon": "^2.0.2"
+  },
   "lint-staged": {
-    "*.js": [
+    "**/*.js": [
       "eslint"
     ]
   },
@@ -15,14 +39,9 @@
       "pre-commit": "lint-staged"
     }
   },
-  "devDependencies": {
-    "eslint": "^6.8.0",
-    "eslint-config-standard": "^14.1.1",
-    "eslint-plugin-import": "^2.20.2",
-    "eslint-plugin-node": "^11.1.0",
-    "eslint-plugin-promise": "^4.2.1",
-    "eslint-plugin-standard": "^4.0.1",
-    "husky": "^4.2.3",
-    "lint-staged": "^10.1.1"
+  "jest": {
+    "transform": {
+      "^.+\\.js?$": "babel-jest"
+    }
   }
 }
