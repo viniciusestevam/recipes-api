@@ -11,12 +11,14 @@
     "test": "NODE_ENV=test jest"
   },
   "dependencies": {
+    "axios": "^0.19.2",
     "express": "^4.17.1"
   },
   "devDependencies": {
     "@babel/core": "^7.9.0",
     "@babel/node": "^7.8.7",
     "@babel/preset-env": "^7.9.0",
+    "axios-mock-adapter": "^1.18.1",
     "babel-jest": "^25.2.6",
     "eslint": "^6.8.0",
     "eslint-config-prettier": "^6.10.1",

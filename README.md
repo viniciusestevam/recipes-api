@@ -4,5 +4,6 @@
 
 - [x] Express config
 - [x] Error handling
-- [ ] RecipePuppy integration
+- [x] RecipePuppy integration
+- [ ] Improve error handling, separating operational from non-opeational
 - [ ] Giphy integration

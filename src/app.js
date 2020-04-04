@@ -15,6 +15,7 @@ app.use((err, req, res, next) => {
 /**
  * routes
  */
+app.get('/', (req, res) => res.send({ ok: true }));
 app.use('/recipes', recipeRoutes);
 
 export default app;
