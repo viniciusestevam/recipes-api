@@ -22,14 +22,14 @@ class RecipePuppyService {
   }
 
   normalizeRecipeTitle(title) {
-    return title.split(' \r')[0];
+    return title.split(' \r')[0].replace('\n', '');
   }
 
   mapRecipe(result) {
     const { title, ingredients, href: link } = result;
     return {
       title: this.normalizeRecipeTitle(title),
-      ingredients,
+      ingredients: ingredients.split(','),
       link
     };
   }
