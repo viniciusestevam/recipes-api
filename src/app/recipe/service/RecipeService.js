@@ -30,6 +30,12 @@ class RecipeService {
 
   validateIngredients(ingredients) {
     const ingredientsArr = ingredients.split(',');
+    if (!ingredients.length) {
+      throw new ApplicationError(
+        400,
+        'Please provide a minimum of 1 ingredient'
+      );
+    }
     if (ingredientsArr.length > 3) {
       throw new ApplicationError(
         400,
