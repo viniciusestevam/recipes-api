@@ -1,62 +1,43 @@
 import ApplicationError from '../../../error/ApplicationError';
-import axios from 'axios';
+import RecipePuppyService from './RecipePuppyService';
+import GiphyService from './GiphyService';
 
 class RecipeService {
   async getRecipes(ingredients) {
-    validateIngredients(ingredients);
-    const recipes = await fetchRecipes(ingredients);
+    this.validateIngredients(ingredients);
+    await this.fetchRecipes(ingredients);
+    await this.setRecipesGif();
     return {
       keywords: ingredients,
-      recipes: recipes
+      recipes: this.recipes
     };
   }
-}
 
-async function fetchRecipes(ingredients) {
-  const recipesPuppyApiEndpoit = `http://www.recipepuppy.com/api?i=${ingredients}`;
-  const results = await fetchRecipePuppy(recipesPuppyApiEndpoit);
-  return results.map((recipe) => mapRecipe(recipe));
-}
-
-async function fetchRecipePuppy(url) {
-  try {
-    const { data } = await axios.get(url);
-    return data.results;
-  } catch (error) {
-    throw new ApplicationError(
-      error.response.status,
-      `An error occured when trying to fetch data from RecipesPuppy: ${error.response.data.statusText}`
-    );
+  async fetchRecipes(ingredients) {
+    this.recipes = await RecipePuppyService.fetchRecipes(ingredients);
   }
-}
 
-function validateIngredients(ingredients) {
-  const ingredientsArr = ingredients.split(',');
-  if (ingredientsArr.length > 3) {
-    throw new ApplicationError(
-      400,
-      'Please provide a maximum of 3 ingredients!'
-    );
+  async setRecipesGif() {
+    for (const recipe of this.recipes) {
+      recipe.gif = (await GiphyService.fetchGif(recipe.title)).bitly_url;
+    }
   }
-  if (!ingredientsArr[0].length || !ingredientsArr.pop().length) {
-    throw new ApplicationError(
-      400,
-      'You can\'t start or finish your list of ingredients with ","'
-    );
+
+  validateIngredients(ingredients) {
+    const ingredientsArr = ingredients.split(',');
+    if (ingredientsArr.length > 3) {
+      throw new ApplicationError(
+        400,
+        'Please provide a maximum of 3 ingredients!'
+      );
+    }
+    if (!ingredientsArr[0].length || !ingredientsArr.pop().length) {
+      throw new ApplicationError(
+        400,
+        'You can\'t start or finish your list of ingredients with ","'
+      );
+    }
   }
-}
-
-export function normalizeRecipeTitle(title) {
-  return title.split(' \r')[0];
-}
-
-export function mapRecipe(result) {
-  const { title, ingredients, href: link } = result;
-  return {
-    title: normalizeRecipeTitle(title),
-    ingredients,
-    link
-  };
 }
 
 export default new RecipeService();
