@@ -8,7 +8,7 @@ class RecipeService {
     await this.fetchRecipes(ingredients);
     await this.setRecipesGif();
     return {
-      keywords: ingredients,
+      keywords: ingredients.split(', '),
       recipes: this.recipes
     };
   }
