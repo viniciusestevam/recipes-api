@@ -20,6 +20,7 @@ class GiphyService {
       });
       return gifs.data[0];
     } catch (error) {
+      console.log(error);
       throw new ApplicationError(
         error.response.status,
         `An error occured when trying to fetch data from Giphy: ${error.response.data.message}`
