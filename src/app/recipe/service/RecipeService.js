@@ -19,7 +19,12 @@ class RecipeService {
 
   async setRecipesGif() {
     for (const recipe of this.recipes) {
-      recipe.gif = (await GiphyService.fetchGif(recipe.title)).bitly_url;
+      const gif = await GiphyService.fetchGif(recipe.title);
+      if (gif) {
+        recipe.gif = gif.bitly_url;
+      } else {
+        recipe.gif = `No gifs for ${recipe.title}`;
+      }
     }
   }
 
