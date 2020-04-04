@@ -2,7 +2,7 @@
 
 ## Todo
 
-- [ ] Express config
-- [ ] Error handling
+- [x] Express config
+- [x] Error handling
 - [ ] RecipePuppy integration
 - [ ] Giphy integration
