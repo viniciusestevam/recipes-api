@@ -1,5 +1,5 @@
-import validateParams from '../../src/app/helpers/validateParams';
-import ApplicationError from '../../src/app/helpers/ApplicationError';
+import validateParams from '../../src/app/shared/validateParams';
+import ApplicationError from '../../src/error/ApplicationError';
 
 it('should throw because queryParams is empty', () => {
   expect(() => validateParams({}, ['i'])).toThrow(ApplicationError);

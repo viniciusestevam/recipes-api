@@ -7,10 +7,13 @@ export default class ApplicationError extends Error {
 
   static handleError(err, res) {
     const { statusCode, message } = err;
-    res.status(statusCode).json({
-      status: 'error',
-      statusCode,
-      message
-    });
+    return res
+      .status(statusCode)
+      .json({
+        status: 'error',
+        statusCode,
+        message
+      })
+      .send();
   }
 }

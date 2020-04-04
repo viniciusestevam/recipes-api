@@ -1,6 +1,6 @@
 import express from 'express';
 import recipeRoutes from './app/recipe/routes';
-import ApplicationError from './app/helpers/ApplicationError';
+import ApplicationError from './error/ApplicationError';
 
 const app = express();
 

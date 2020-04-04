@@ -1,4 +1,4 @@
-import ApplicationError from './ApplicationError';
+import ApplicationError from '../../error/ApplicationError';
 
 /**
  *
@@ -11,10 +11,8 @@ export default function validateParams(queryParams, validQuery) {
       throw new ApplicationError(400, 'Any parameter has been provided.');
     }
     for (const param in queryParams) {
-      if (queryParams[param]) {
-        if (!validQuery.includes(param)) {
-          throw new ApplicationError(400, 'Invalid params.');
-        }
+      if (!validQuery.includes(param)) {
+        throw new ApplicationError(400, 'Invalid params.');
       }
     }
   } catch (error) {
