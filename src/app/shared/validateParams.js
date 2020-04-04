@@ -6,7 +6,7 @@ import ApplicationError from '../../error/ApplicationError';
  * @param {string[]} validQuery Array with the valid params the method accepts.
  */
 export default function validateParams(queryParams, validQuery) {
-  try {
+  if (queryParams && validQuery) {
     if (!Object.keys(queryParams).length) {
       throw new ApplicationError(400, 'Any parameter has been provided.');
     }
@@ -15,7 +15,7 @@ export default function validateParams(queryParams, validQuery) {
         throw new ApplicationError(400, 'Invalid params.');
       }
     }
-  } catch (error) {
-    throw new ApplicationError(500, 'Internal server error.');
+  } else {
+    throw new ApplicationError(500, 'Internal server Error.');
   }
 }
