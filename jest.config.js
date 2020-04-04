@@ -6,7 +6,7 @@ module.exports = {
   clearMocks: true,
   collectCoverage: true,
   collectCoverageFrom: ['src/**'],
-  coverageDirectory: '__tests__/coverage',
+  coverageDirectory: 'coverage',
   testEnvironment: 'node',
   testMatch: ['**/__tests__/**/*.test.js?(x)']
 };
