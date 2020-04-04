@@ -1,1 +1,2 @@
-const test = 'test';
+const testingHusky = 'test';
+console.log(testingHusky);
