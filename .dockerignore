@@ -1,0 +1,9 @@
+node_modules
+coverage
+.env.example
+.gitignore
+LICENSE
+README.md
+prettierrc.json
+.eslintrc.json
+npm-debug.log
