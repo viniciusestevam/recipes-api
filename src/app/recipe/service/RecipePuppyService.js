@@ -29,7 +29,7 @@ class RecipePuppyService {
     const { title, ingredients, href: link } = result;
     return {
       title: this.normalizeRecipeTitle(title),
-      ingredients: ingredients.split(','),
+      ingredients: ingredients.split(', '),
       link
     };
   }
