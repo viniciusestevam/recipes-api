@@ -31,3 +31,8 @@ it('should throw starting i with ,', async () => {
   const response = await supertest(app).get(endpoint).query({ i: ',' });
   expect(response.status).toBe(400);
 });
+
+it('should throw with no ingredients', async () => {
+  const response = await supertest(app).get(endpoint).query({ i: '' });
+  expect(response.status).toBe(400);
+});

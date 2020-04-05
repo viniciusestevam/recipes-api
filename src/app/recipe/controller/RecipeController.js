@@ -11,7 +11,7 @@ class RecipeController {
       ).catch((err) => ApplicationError.handleError(err, res));
       return res.status(200).send(response);
     } catch (error) {
-      return error;
+      next(error);
     }
   }
 }
