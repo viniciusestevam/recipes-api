@@ -45,7 +45,7 @@ class RecipeService {
     if (!ingredientsArr[0].length || !ingredientsArr.pop().length) {
       throw new ApplicationError(
         400,
-        'You can\'t start or finish your list of ingredients with ","'
+        "You can't start or finish your list of ingredients with ,"
       );
     }
   }

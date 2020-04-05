@@ -3,10 +3,6 @@ export default class ApplicationError extends Error {
     super();
     this.statusCode = statusCode;
     this.message = message;
-    if (process.env.NODE_ENV === 'production') {
-      console.log(this.stack);
-      this.stack = null;
-    }
   }
 
   static handleError(err, res) {
